@@ -25,6 +25,16 @@ Since `tern` internally relies on Docker, we need to run this container in `--pr
 docker run --privileged -it --rm -v /var/run/docker.sock:/var/run/docker.sock tern --version
 ```
 
+## Extracting Bill of Material from Docker Images
+
+Tern makes it very easy to extract Docker images BOMs. All the available export formats are available on the [official docs](https://github.com/vmware/tern)
+
+Example:
+
+```tern report -f json -i debian:buster > debian_buster.json```
+
+This command will create a file called `debian_buster.json` with Debian's Buster [official image](https://hub.docker.com/layers/debian/library/debian) BOM
+
 ## Content
 
 The images obviously contains Tern, but also two other files:
