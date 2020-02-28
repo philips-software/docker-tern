@@ -19,8 +19,10 @@ Current versions available:
 
 Images can be found on [https://hub.docker.com/r/philipssoftware/tern/](https://hub.docker.com/r/philipssoftware/tern/).
 
+Since `tern` internally relies on Docker, we need to run this container in `--privileged` mode so it can mount on the host's disk as well as bind `docker.sock` from the host.
+
 ```
-docker run philipssoftware/tern:latest tern --version
+docker run --privileged -it --rm -v /var/run/docker.sock:/var/run/docker.sock tern --version
 ```
 
 ## Content
