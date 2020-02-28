@@ -48,7 +48,7 @@ Example:
 
 ```
 $ docker run philipssoftware/tern:latest cat REPO
-https://github.com/philips-software/docker-tern/tree/bbb5945481e1579c87293d16bbf5cd654f3da158
+https://github.com/philips-software/docker-tern/tree/14ab374e0812ba03e32e5f2c81c7c9dfb8ef7958
 ```
 
 ### TAGS
