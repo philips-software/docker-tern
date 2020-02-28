@@ -12,7 +12,7 @@ jobs:
         submodules: true
     - name: Build Docker Images with Tern
       run: |
-        ./ci/docker_build_and_push.sh 3/dind-tern tern:1 tern:latest
+        ./ci/docker_build_and_push.sh 1/dind-tern tern:1 tern:latest
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: '${{ secrets.DOCKER_PASSWORD }}'
