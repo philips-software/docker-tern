@@ -10,4 +10,7 @@ RUN apk add python3
 
 RUN pip3 install --upgrade pip && pip3 install tern
 
+ADD REPO .
+ADD TAGS .
+
 CMD ["sh"]  
