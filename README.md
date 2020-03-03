@@ -29,9 +29,15 @@ docker run --privileged -it --rm -v /var/run/docker.sock:/var/run/docker.sock te
 
 Tern makes it very easy to extract Docker images BOMs. All the available export formats are available on the [official docs](https://github.com/vmware/tern)
 
+_It is necessary to bind a mount dir to the Docker container first_
+
 Example:
 
-```tern report -f json -i debian:buster > debian_buster.json```
+```bash
+mkdir my_dir
+
+docker run --privileged -v /var/run/docker.sock:/var/run/docker.sock --mount type=bind,source=$PWD/my_dir,target=/hostmount --rm philipssoftware/tern report -f json -i debian:buster > debian.json
+```
 
 This command will create a file called `debian_buster.json` with Debian's Buster [official image](https://hub.docker.com/layers/debian/library/debian) BOM
 
