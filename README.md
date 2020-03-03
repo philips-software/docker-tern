@@ -36,7 +36,7 @@ Example:
 ```bash
 mkdir my_dir
 
-docker run --privileged -v /var/run/docker.sock:/var/run/docker.sock --mount type=bind,source=$PWD/my_dir,target=/hostmount --rm philipssoftware/tern report -f json -i debian:buster > debian.json
+docker run --privileged -v /var/run/docker.sock:/var/run/docker.sock --mount type=bind,source=$PWD/my_dir,target=/hostmount --rm philipssoftware/tern report -f json -i debian:buster > debian_buster.json
 ```
 
 This command will create a file called `debian_buster.json` with Debian's Buster [official image](https://hub.docker.com/layers/debian/library/debian) BOM
