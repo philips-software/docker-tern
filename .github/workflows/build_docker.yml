@@ -6,15 +6,17 @@ jobs:
   build_dind_tern:
     name: dind-tern
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v1
-      with:
-        submodules: true
+    - uses: actions/checkout@v2
+
     - name: Build Docker Images with Tern
-      run: |
-        ./ci/docker_build_and_push.sh 1/dind-tern tern:1 tern:latest
+      uses: philips-software/docker-ci-scripts@v1
+      with:
+        dockerfile: 1/dind-tern
+        tags: tern tern:1 tern:latest
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: '${{ secrets.DOCKER_PASSWORD }}'
-        DOCKER_ORGANIZATION: ${{ secrets.DOCKER_ORGANIZATION }}
-        GITHUB_ORGANIZATION: ${{ secrets.GITHUB_ORGANIZATION }}
+        DOCKER_ORGANIZATION: philipssoftware
+        GITHUB_ORGANIZATION: philips-software
