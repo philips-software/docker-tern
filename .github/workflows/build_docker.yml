@@ -11,10 +11,11 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Build Docker Images with Tern
-      uses: philips-software/docker-ci-scripts@v1
+      uses: philips-software/docker-ci-scripts@v2.0.1
       with:
         dockerfile: 1/dind-tern
-        tags: tern tern:1 tern:latest
+        image-name: tern
+        tags: latest 1 
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: '${{ secrets.DOCKER_PASSWORD }}'
