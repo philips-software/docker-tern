@@ -12,7 +12,7 @@ RUN apk --no-cache add \
 
 RUN apk add python3
 
-RUN pip3 install --upgrade pip && pip3 install tern
+RUN pip3 install --upgrade pip && pip3 install -Iv tern==2.0.0
 
 ADD REPO .
 ADD TAGS .
