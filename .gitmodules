@@ -1,0 +1,3 @@
+[submodule "2/tern"]
+	path = 2/tern
+	url = https://github.com/tern-tools/tern

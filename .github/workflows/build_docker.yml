@@ -3,6 +3,25 @@ on: [push]
 name: Build Docker images
 
 jobs:
+  build_tern:
+    name: tern
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build Docker Images with Tern 2.2.0
+      uses: philips-software/docker-ci-scripts@v2.2.0
+      with:
+        dockerfile: 2/tern
+        image-name: tern
+        tags: latest 2 2.2 2.2.0
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: '${{ secrets.DOCKER_PASSWORD }}'
+        DOCKER_ORGANIZATION: philipssoftware
+        GITHUB_ORGANIZATION: philips-software
+
   build_dind_tern:
     name: dind-tern
     runs-on: ubuntu-latest
@@ -15,7 +34,7 @@ jobs:
       with:
         dockerfile: 2/dind-tern
         image-name: tern
-        tags: latest 2 2.0 2.0.0
+        tags: 2.0 2.0.0
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: '${{ secrets.DOCKER_PASSWORD }}'
