@@ -26,7 +26,7 @@ jobs:
         GITHUB_ORGANIZATION: philips-software
 
     - name: Checkout latest version of tern 
-      run: cd 2/tern && git pull origin master
+      run: git submodule update --remote --merge
         
     - name: Build Docker Images with Tern latest
       uses: philips-software/docker-ci-scripts@v2.2.2
