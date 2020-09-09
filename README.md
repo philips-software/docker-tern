@@ -12,8 +12,8 @@ Current versions available:
 ```
 .
 ├── 2
-│   ├── dind-tern
-│       └── Dockerfile
+│   ├── dind-tern
+│   └── tern
 ```
 ## Usage
 
@@ -22,21 +22,19 @@ Images can be found on [https://hub.docker.com/r/philipssoftware/tern/](https://
 Since `tern` internally relies on Docker, we need to run this container in `--privileged` mode so it can mount on the host's disk as well as bind `docker.sock` from the host.
 
 ```
-docker run --privileged -it --rm -v /var/run/docker.sock:/var/run/docker.sock tern --version
+docker run --privileged --rm -v /var/run/docker.sock:/var/run/docker.sock philipssoftware/tern --version 
 ```
 
 ## Extracting Bill of Material from Docker Images
 
 Tern makes it very easy to extract Docker images BOMs. All the available export formats are available on the [official docs](https://github.com/vmware/tern)
 
-_It is necessary to bind a mount dir to the Docker container first_
-
 Example:
 
 ```bash
 mkdir my_dir
 
-docker run --privileged -v /var/run/docker.sock:/var/run/docker.sock --mount type=bind,source=$PWD/my_dir,target=/hostmount --rm philipssoftware/tern report -f json -i debian:buster > debian_buster.json
+docker run --privileged --rm -v /var/run/docker.sock:/var/run/docker.sock philipssoftware/tern report -f json -i debian:buster > debian_buster.json
 ```
 
 This command will create a file called `debian_buster.json` with Debian's Buster [official image](https://hub.docker.com/layers/debian/library/debian) BOM
