@@ -14,7 +14,7 @@ jobs:
         depth: 0
 
     - name: Build Docker Images with Tern 2.2.0
-      uses: philips-software/docker-ci-scripts@v2.2.2
+      uses: philips-software/docker-ci-scripts@v2.3.0
       with:
         dockerfile: 2/tern
         image-name: tern
@@ -26,7 +26,7 @@ jobs:
         GITHUB_ORGANIZATION: philips-software
 
     - name: Build Docker Images with Tern latest
-      uses: philips-software/docker-ci-scripts@v2.2.2
+      uses: philips-software/docker-ci-scripts@v2.3.0
       with:
         dockerfile: latest/tern
         image-name: tern
