@@ -11,14 +11,25 @@ jobs:
     - uses: actions/checkout@v2
       with:
         submodules: recursive
-        depth: 0
 
     - name: Build Docker Images with Tern 2.2.0
       uses: philips-software/docker-ci-scripts@v2.3.0
       with:
-        dockerfile: 2/tern
+        dockerfile: 2/vanilla/tern
         image-name: tern
         tags: 2 2.2 2.2.0
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: '${{ secrets.DOCKER_PASSWORD }}'
+        DOCKER_ORGANIZATION: philipssoftware
+        GITHUB_ORGANIZATION: philips-software
+
+    - name: Build Docker Images with scancode
+      uses: philips-software/docker-ci-scripts@v2.3.0
+      with:
+        dockerfile: 2/scancode/tern/docker/Dockerfile.scancode
+        image-name: tern
+        tags: 2-scancode 2.2-scancode 2.2.0-scancode
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: '${{ secrets.DOCKER_PASSWORD }}'
