@@ -1,6 +1,9 @@
-[submodule "2/tern"]
-	path = 2/tern
+[submodule "2/vanilla/tern"]
+	path = 2/vanilla/tern
 	url = https://github.com/tern-tools/tern
 [submodule "latest/tern"]
 	path = latest/tern
 	url = https://github.com/tern-tools/tern
+[submodule "2/scancode/tern"]
+	path = 2/scancode/tern
+	url = https://github.com/tern-tools/tern.git
