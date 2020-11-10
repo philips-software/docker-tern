@@ -10,4 +10,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2 
     - name: Run a repolinter
-      uses: philips-labs/github-action-repolinter@master
+      uses: philips-labs/github-action-repolinter@v1.0.0
