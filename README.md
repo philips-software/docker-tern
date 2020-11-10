@@ -12,8 +12,10 @@ Current versions available:
 ```
 .
 ├── 2
-│   ├── dind-tern
-│   └── tern
+│   ├── scancode
+│   └── vanilla
+└── latest
+    └── tern
 ```
 ## Usage
 
