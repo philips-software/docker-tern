@@ -4,6 +4,3 @@
 [submodule "latest/tern"]
 	path = latest/tern
 	url = https://github.com/tern-tools/tern.git
-[submodule "2/scancode/tern"]
-	path = 2/scancode/tern
-	url = https://github.com/jeroenknoops/tern.git
