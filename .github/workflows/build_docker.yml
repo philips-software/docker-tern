@@ -15,7 +15,7 @@ jobs:
     - name: Build Docker Images with Tern 2.4.0
       uses: philips-software/docker-ci-scripts@v3.2.1
       with:
-        dockerfile: 2/vanilla/tern
+        dockerfile: 2/vanilla/tern/docker/Dockerfile
         image-name: tern
         tags: 2 2.4 2.4.0
       env:
@@ -39,7 +39,7 @@ jobs:
     - name: Build Docker Images with Tern latest
       uses: philips-software/docker-ci-scripts@v3.2.1
       with:
-        dockerfile: latest/tern
+        dockerfile: latest/tern/docker/Dockerfile
         image-name: tern
         tags: latest
       env:
