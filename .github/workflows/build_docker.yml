@@ -57,6 +57,7 @@ jobs:
       run: |
         cd local/tern
         pip install -e .[dev]
+        cp -r dist ../../
 
     - name: Build Docker Images with Tern local
       uses: philips-software/docker-ci-scripts@v3.2.1
