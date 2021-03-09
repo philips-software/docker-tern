@@ -4,3 +4,6 @@
 [submodule "latest/tern"]
 	path = latest/tern
 	url = https://github.com/tern-tools/tern.git
+[submodule "local/tern"]
+	path = local/tern
+	url = https://github.com/JeroenKnoops/tern.git

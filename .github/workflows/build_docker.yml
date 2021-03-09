@@ -47,3 +47,25 @@ jobs:
         DOCKER_PASSWORD: '${{ secrets.DOCKER_PASSWORD }}'
         DOCKER_ORGANIZATION: philipssoftware
         GITHUB_ORGANIZATION: philips-software
+
+    - name: setup python 
+      uses: actions/setup-python@v2
+      with:
+          python-version: '3.9' 
+
+    - name: Build local version
+      run: |
+        cd local/tern
+        pip install -e .[dev]
+
+    - name: Build Docker Images with Tern local
+      uses: philips-software/docker-ci-scripts@v3.2.1
+      with:
+        dockerfile: local/tern/docker/Dockerfile.local
+        image-name: tern
+        tags: local
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: '${{ secrets.DOCKER_PASSWORD }}'
+        DOCKER_ORGANIZATION: philipssoftware
+        GITHUB_ORGANIZATION: philips-software
