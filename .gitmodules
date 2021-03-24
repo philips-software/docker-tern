@@ -7,3 +7,6 @@
 [submodule "local/tern"]
 	path = local/tern
 	url = https://github.com/JeroenKnoops/tern.git
+[submodule "jamiemagee/tern"]
+	path = jamiemagee/tern
+	url = https://github.com/JamieMagee/tern.git

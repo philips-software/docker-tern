@@ -48,6 +48,18 @@ jobs:
         DOCKER_ORGANIZATION: philipssoftware
         GITHUB_ORGANIZATION: philips-software
 
+    - name: Build Docker Images with Tern new docker-base 
+      uses: philips-software/docker-ci-scripts@v3.2.1
+      with:
+        dockerfile: jamiemagee/tern/docker/Dockerfile
+        image-name: tern
+        tags: jamiemagee
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: '${{ secrets.DOCKER_PASSWORD }}'
+        DOCKER_ORGANIZATION: philipssoftware
+        GITHUB_ORGANIZATION: philips-software
+
     - name: setup python 
       uses: actions/setup-python@v2
       with:
