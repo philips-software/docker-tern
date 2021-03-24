@@ -17,7 +17,7 @@ jobs:
       with:
         dockerfile: 2/vanilla/tern/docker/Dockerfile
         image-name: tern
-        tags: 2 2.4 2.4.0
+        tags: 2 2.5 2.5.0
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: '${{ secrets.DOCKER_PASSWORD }}'
@@ -29,7 +29,7 @@ jobs:
       with:
         dockerfile: 2/scancode/tern/docker/Dockerfile.scancode
         image-name: tern
-        tags: 2-scancode 2.4-scancode 2.4.0-scancode
+        tags: 2-scancode 2.5-scancode 2.5.0-scancode
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: '${{ secrets.DOCKER_PASSWORD }}'
