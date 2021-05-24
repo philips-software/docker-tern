@@ -14,7 +14,9 @@ Current versions available:
 ├── 2
 │   ├── scancode
 │   └── vanilla
-└── latest
+├─── latest
+│   └── tern
+└─── local
     └── tern
 ```
 ## Usage
