@@ -12,12 +12,12 @@ jobs:
       with:
         submodules: recursive
 
-    - name: Build Docker Images with Tern 2.6.0
+    - name: Build Docker Images with Tern 2.6.1
       uses: philips-software/docker-ci-scripts@v3.2.1
       with:
         dockerfile: 2/vanilla/tern/docker/Dockerfile
         image-name: tern
-        tags: 2 2.6 2.6.0
+        tags: 2 2.6 2.6.1
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: '${{ secrets.DOCKER_PASSWORD }}'
@@ -29,7 +29,7 @@ jobs:
       with:
         dockerfile: 2/scancode/tern/docker/Dockerfile.scancode
         image-name: tern
-        tags: 2-scancode 2.6-scancode 2.6.0-scancode
+        tags: 2-scancode 2.6-scancode 2.6.1-scancode
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: '${{ secrets.DOCKER_PASSWORD }}'
