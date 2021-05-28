@@ -13,7 +13,7 @@ jobs:
         submodules: recursive
 
     - name: Build Docker Images with Tern 2.6.1
-      uses: philips-software/docker-ci-scripts@v2.2.2
+      uses: philips-software/docker-ci-scripts@v3.2.1
       with:
         dockerfile: 2/vanilla/tern/docker/Dockerfile
         image-name: tern
