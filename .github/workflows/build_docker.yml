@@ -13,7 +13,7 @@ jobs:
         submodules: recursive
 
     - name: Build Docker Images with Tern 2.6.1
-      uses: philips-software/docker-ci-scripts@v3.2.1
+      uses: philips-software/docker-ci-scripts@v2.2.2
       with:
         dockerfile: 2/vanilla/tern/docker/Dockerfile
         image-name: tern
@@ -49,11 +49,12 @@ jobs:
         GITHUB_ORGANIZATION: philips-software
 
     - name: Build Docker Images with Tern and scancode latest
-      uses: philips-software/docker-ci-scripts@v3.2.1
+      uses: philips-software/docker-ci-scripts@add-base-directory
       with:
-        dockerfile: latest/tern/docker/Dockerfile.scancode
+        dockerfile: docker/Dockerfile.scancode
         image-name: tern
         tags: latest-scanocde
+        base-dir: latest/tern
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: '${{ secrets.DOCKER_PASSWORD }}'
