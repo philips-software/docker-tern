@@ -53,7 +53,7 @@ jobs:
       with:
         dockerfile: docker/Dockerfile.scancode
         image-name: tern
-        tags: latest-scanocde
+        tags: latest-scancode
         base-dir: latest/tern
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
