@@ -62,7 +62,7 @@ jobs:
         GITHUB_ORGANIZATION: philips-software
 
     - name: setup python 
-      uses: actions/setup-python@v2.2.2
+      uses: actions/setup-python@v2.3.0
       with:
           python-version: '3.9' 
 
