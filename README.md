@@ -26,7 +26,7 @@ Images can be found on [https://hub.docker.com/r/philipssoftware/tern/](https://
 Since `tern` internally relies on Docker, we need to run this container in `--privileged` mode so it can mount on the host's disk as well as bind `docker.sock` from the host.
 
 ```
-docker run --privileged --rm -v /var/run/docker.sock:/var/run/docker.sock philipssoftware/tern --version 
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock philipssoftware/tern --version 
 ```
 
 ## Extracting Bill of Material from Docker Images
@@ -38,7 +38,7 @@ Example:
 ```bash
 mkdir my_dir
 
-docker run --privileged --rm -v /var/run/docker.sock:/var/run/docker.sock philipssoftware/tern report -f json -i debian:buster > debian_buster.json
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock philipssoftware/tern report -f json -i debian:buster > debian_buster.json
 ```
 
 This command will create a file called `debian_buster.json` with Debian's Buster [official image](https://hub.docker.com/layers/debian/library/debian) BOM
