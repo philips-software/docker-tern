@@ -2,84 +2,69 @@ on: [push]
 
 name: Build Docker images
 
+env:
+  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+  DOCKER_PASSWORD: '${{ secrets.DOCKER_PASSWORD }}'
+  DOCKER_ORGANIZATION: philipssoftware
+  GITHUB_ORGANIZATION: philips-software
+
 jobs:
   build_tern:
     name: tern
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        include:
+          - name: Build Docker Images with Tern 2.9.1
+            dockerfile: 2/vanilla/tern/docker/Dockerfile
+            tags: 2 2.9 2.9.1
+          - name: Build Docker Images with scancode
+            dockerfile: 2/scancode/tern/docker/Dockerfile.scancode
+            tags: 2-scancode 2.9-scancode 2.9.1-scancode
+          - name: Build Docker Images with Tern latest
+            dockerfile: latest/tern/docker/Dockerfile
+            tags: latest
     steps:
-    - uses: actions/checkout@v2.4.0
-      with:
-        submodules: recursive
+      - uses: actions/checkout@v2.4.0
+        with:
+          submodules: recursive
+      - name: ${{ matrix.name }} 
+        uses: philips-software/docker-ci-scripts@v3.3.2
+        with:
+          dockerfile: ${{ matrix.dockerfile }} 
+          image-name: tern
+          tags: ${{ matrix.tags }} 
 
-    - name: Build Docker Images with Tern 2.6.1
-      uses: philips-software/docker-ci-scripts@v3.3.2
-      with:
-        dockerfile: 2/vanilla/tern/docker/Dockerfile
-        image-name: tern
-        tags: 2 2.9 2.9.0
-      env:
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: '${{ secrets.DOCKER_PASSWORD }}'
-        DOCKER_ORGANIZATION: philipssoftware
-        GITHUB_ORGANIZATION: philips-software
+  manual_build:
+    name: tern manual
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.4.0
+        with:
+          submodules: recursive
 
-    - name: Build Docker Images with scancode
-      uses: philips-software/docker-ci-scripts@v3.3.2
-      with:
-        dockerfile: 2/scancode/tern/docker/Dockerfile.scancode
-        image-name: tern
-        tags: 2-scancode 2.9-scancode 2.9.0-scancode
-      env:
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: '${{ secrets.DOCKER_PASSWORD }}'
-        DOCKER_ORGANIZATION: philipssoftware
-        GITHUB_ORGANIZATION: philips-software
+      - name: Build Docker Images with Tern and scancode latest
+        uses: philips-software/docker-ci-scripts@v3.3.2
+        with:
+          dockerfile: docker/Dockerfile.scancode
+          image-name: tern
+          tags: latest-scancode
+          base-dir: latest/tern
 
-    - name: Build Docker Images with Tern latest
-      uses: philips-software/docker-ci-scripts@v3.3.2
-      with:
-        dockerfile: latest/tern/docker/Dockerfile
-        image-name: tern
-        tags: latest
-      env:
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: '${{ secrets.DOCKER_PASSWORD }}'
-        DOCKER_ORGANIZATION: philipssoftware
-        GITHUB_ORGANIZATION: philips-software
+      - name: setup python 
+        uses: actions/setup-python@v2.3.1
+        with:
+            python-version: '3.9' 
 
-    - name: Build Docker Images with Tern and scancode latest
-      uses: philips-software/docker-ci-scripts@v3.3.2
-      with:
-        dockerfile: docker/Dockerfile.scancode
-        image-name: tern
-        tags: latest-scancode
-        base-dir: latest/tern
-      env:
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: '${{ secrets.DOCKER_PASSWORD }}'
-        DOCKER_ORGANIZATION: philipssoftware
-        GITHUB_ORGANIZATION: philips-software
+      - name: Build local version
+        run: |
+          cd local/tern
+          python setup.py sdist
+          cp -r dist ../../
 
-    - name: setup python 
-      uses: actions/setup-python@v2.3.1
-      with:
-          python-version: '3.9' 
-
-    - name: Build local version
-      run: |
-        cd local/tern
-        python setup.py sdist
-        cp -r dist ../../
-
-    - name: Build Docker Images with Tern local
-      uses: philips-software/docker-ci-scripts@v3.3.2
-      with:
-        dockerfile: local/tern/docker/Dockerfile.local
-        image-name: tern
-        tags: local
-      env:
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: '${{ secrets.DOCKER_PASSWORD }}'
-        DOCKER_ORGANIZATION: philipssoftware
-        GITHUB_ORGANIZATION: philips-software
+      - name: Build Docker Images with Tern local
+        uses: philips-software/docker-ci-scripts@v3.3.2
+        with:
+          dockerfile: local/tern/docker/Dockerfile.local
+          image-name: tern
+          tags: local
