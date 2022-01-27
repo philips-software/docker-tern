@@ -29,7 +29,7 @@ jobs:
         with:
           submodules: recursive
       - name: ${{ matrix.name }} 
-        uses: philips-software/docker-ci-scripts@v3.3.2
+        uses: philips-software/docker-ci-scripts@v4.0.0
         with:
           dockerfile: ${{ matrix.dockerfile }} 
           image-name: tern
@@ -44,7 +44,7 @@ jobs:
           submodules: recursive
 
       - name: Build Docker Images with Tern and scancode latest
-        uses: philips-software/docker-ci-scripts@v3.3.2
+        uses: philips-software/docker-ci-scripts@v4.0.0
         with:
           dockerfile: docker/Dockerfile.scancode
           image-name: tern
@@ -63,7 +63,7 @@ jobs:
           cp -r dist ../../
 
       - name: Build Docker Images with Tern local
-        uses: philips-software/docker-ci-scripts@v3.3.2
+        uses: philips-software/docker-ci-scripts@v4.0.0
         with:
           dockerfile: local/tern/docker/Dockerfile.local
           image-name: tern
