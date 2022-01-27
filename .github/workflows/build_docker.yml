@@ -7,6 +7,9 @@ env:
   DOCKER_PASSWORD: '${{ secrets.DOCKER_PASSWORD }}'
   DOCKER_ORGANIZATION: philipssoftware
   GITHUB_ORGANIZATION: philips-software
+  COSIGN_PRIVATE_KEY: '${{ secrets.COSIGN_PRIVATE_KEY }}'
+  COSIGN_PASSWORD: '${{ secrets.COSIGN_PASSWORD }}'
+  COSIGN_PUBLIC_KEY: '${{ secrets.COSIGN_PUBLIC_KEY  }}'
 
 jobs:
   build_tern:
@@ -33,7 +36,9 @@ jobs:
         with:
           dockerfile: ${{ matrix.dockerfile }} 
           image-name: tern
-          tags: ${{ matrix.tags }} 
+          tags: ${{ matrix.tags }}
+          slsa-provenance: true
+          sign: true
 
   manual_build:
     name: tern manual
@@ -50,6 +55,8 @@ jobs:
           image-name: tern
           tags: latest-scancode
           base-dir: latest/tern
+          slsa-provenance: true
+          sign: true
 
       - name: setup python 
         uses: actions/setup-python@v2.3.1
@@ -68,3 +75,5 @@ jobs:
           dockerfile: local/tern/docker/Dockerfile.local
           image-name: tern
           tags: local
+          slsa-provenance: true
+          sign: true

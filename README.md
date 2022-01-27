@@ -43,6 +43,27 @@ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock philipssoftware/ter
 
 This command will create a file called `debian_buster.json` with Debian's Buster [official image](https://hub.docker.com/layers/debian/library/debian) BOM
 
+## SLSA-provenance and signing
+
+The images have a provenance attached to it and are signed. You can verify these.
+
+### Signing
+
+You can verify the image with [Cosign](https://github.com/sigstore/cosign).
+
+```bash
+cosign verify --key cosign.pub philipssoftware/tern | jq .
+```
+
+### SLSA-provenance
+
+You can verify the provenance file with [Cosgin](https://github.com/sigstore/cosgin).
+
+```bash
+repodigest=$(docker inspect philipssoftware/tern | jq -r .[0].RepoDigests[0])
+cosign verify-attestation --key cosign.pub $repodigest | jq -r '.payload' | base64 -d | jq .
+```
+
 ## Content
 
 The images obviously contains Tern, but also two other files:
