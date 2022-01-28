@@ -55,8 +55,6 @@ jobs:
           image-name: tern
           tags: latest-scancode
           base-dir: latest/tern
-          slsa-provenance: true
-          sign: true
 
       - name: setup python 
         uses: actions/setup-python@v2.3.1
