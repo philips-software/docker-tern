@@ -49,12 +49,14 @@ jobs:
           submodules: recursive
 
       - name: Build Docker Images with Tern and scancode latest
-        uses: philips-software/docker-ci-scripts@v4.1.0
+        uses: philips-software/docker-ci-scripts@bug/temp-cosign-file
         with:
           dockerfile: docker/Dockerfile.scancode
           image-name: tern
           tags: latest-scancode
           base-dir: latest/tern
+          slsa-provenance: true
+          sign: true
 
       - name: setup python 
         uses: actions/setup-python@v2.3.1
@@ -68,7 +70,7 @@ jobs:
           cp -r dist ../../
 
       - name: Build Docker Images with Tern local
-        uses: philips-software/docker-ci-scripts@v4.1.0
+        uses: philips-software/docker-ci-scripts@bug/temp-cosign-file
         with:
           dockerfile: local/tern/docker/Dockerfile.local
           image-name: tern
