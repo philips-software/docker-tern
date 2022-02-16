@@ -39,6 +39,7 @@ jobs:
           tags: ${{ matrix.tags }}
           slsa-provenance: true
           sign: true
+          sbom: true
 
   manual_build:
     name: tern manual
@@ -57,6 +58,7 @@ jobs:
           base-dir: latest/tern
           slsa-provenance: true
           sign: true
+          sbom: true
 
       - name: setup python 
         uses: actions/setup-python@v2.3.1
@@ -77,3 +79,5 @@ jobs:
           tags: local
           slsa-provenance: true
           sign: true
+          sbom: true
+
