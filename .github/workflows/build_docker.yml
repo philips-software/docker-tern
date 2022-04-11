@@ -28,7 +28,7 @@ jobs:
             dockerfile: latest/tern/docker/Dockerfile
             tags: latest
     steps:
-      - uses: actions/checkout@v2.4.0
+      - uses: actions/checkout@v3.0.0
         with:
           submodules: recursive
       - name: ${{ matrix.name }} 
@@ -45,7 +45,7 @@ jobs:
     name: tern manual
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.4.0
+      - uses: actions/checkout@v3.0.0
         with:
           submodules: recursive
 
