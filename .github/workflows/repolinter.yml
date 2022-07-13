@@ -8,6 +8,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2.4.0 
+    - uses: actions/checkout@v3.0.2 
     - name: Run a repolinter
       uses: philips-labs/github-action-repolinter@v1.0.0
