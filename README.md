@@ -2,7 +2,8 @@
 
 ![Build Docker images](https://github.com/philips-software/docker-tern/workflows/Build%20Docker%20images/badge.svg)
 ![repolinter](https://github.com/philips-software/docker-tern/workflows/repolinter/badge.svg)
-[![Slack](https://philips-software-slackin.now.sh/badge.svg)](https://philips-software-slackin.now.sh)
+
+> ⚠️ We're no longer maintaining this image.
 
 # Docker images
 
